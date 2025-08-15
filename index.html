@@ -1,67 +1,290 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAP Garland, LLC</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YOUR BRAND — Modern One‑Page Website</title>
+  <meta name="description" content="Professional one-page website template with hero, services, features, portfolio, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f0f0f0;
-      color: #333;
+    :root{
+      --bg: #0b0f14;
+      --card: #121821;
+      --text: #e6ecf2;
+      --muted: #9fb0c2;
+      --brand: #5eead4; /* accent */
+      --brand-2: #60a5fa; /* secondary accent */
+      --ring: rgba(94,234,212,.35);
+      --maxw: 1200px;
+      --radius: 18px;
+      --shadow: 0 10px 25px rgba(0,0,0,.25);
     }
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      background: linear-gradient(180deg, #0b0f14 0%, #0c1118 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h1, h2 {
-      color: #003366;
-    }
-    .contact {
-      background: #fff;
-      padding: 20px;
-      border-left: 5px solid #003366;
-      margin-top: 30px;
-    }
-    footer {
-      background-color: #003366;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 50px;
-    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:14px 18px; border-radius:14px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#081018; font-weight:700; box-shadow:var(--shadow); border:none; cursor:pointer}
+    .btn.ghost{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.14)}
+    .tag{display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(94,234,212,.12); color:var(--brand); font-weight:600; border:1px solid rgba(94,234,212,.25)}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .grid{display:grid; gap:18px}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width: 960px){.grid-3{grid-template-columns:1fr 1fr}} 
+    @media (max-width: 680px){.grid-3,.grid-2{grid-template-columns:1fr}}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.4) blur(10px); background:rgba(11,15,20,.6); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; align-items:center; gap:.75rem; font-weight:800; letter-spacing:.5px}
+    .logo{width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 6px 18px var(--ring)}
+    nav ul{display:flex; list-style:none; gap:22px; margin:0; padding:0}
+    .menu-btn{display:none}
+    @media (max-width:860px){nav ul{display:none}.menu-btn{display:inline-flex}}
+
+    /* Hero */
+    .hero{padding:80px 0 40px; position:relative; overflow:hidden}
+    .hero-blob{position:absolute; inset:auto -20% -20% auto; width:60vw; height:60vw; background:radial-gradient(40% 40% at 50% 50%, rgba(96,165,250,.25) 0%, rgba(96,165,250,0) 60%), radial-gradient(35% 35% at 65% 35%, rgba(94,234,212,.25) 0%, rgba(94,234,212,0) 60%); filter:blur(50px); opacity:.55; pointer-events:none}
+    .hero h1{font-size:clamp(2rem,4vw,3.5rem); line-height:1.05; margin:18px 0}
+    .hero p{color:var(--muted); font-size:clamp(1rem,1.4vw,1.1rem)}
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+
+    /* Section wrappers */
+    section{padding:64px 0}
+    section .head{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:22px}
+    section h2{font-size:clamp(1.5rem,2.5vw,2rem); margin:0}
+    .muted{color:var(--muted)}
+
+    /* Cards */
+    .card.pad{padding:22px}
+
+    /* Gallery */
+    .gallery{display:grid; gap:14px; grid-template-columns:repeat(4,minmax(0,1fr))}
+    .gallery .item{border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.08)}
+    @media (max-width:1024px){.gallery{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:700px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+    /* Contact */
+    form{display:grid; gap:12px}
+    input,textarea{width:100%; padding:14px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0e141c; color:var(--text)}
+    input:focus,textarea:focus{outline:none; border-color:var(--brand); box-shadow:0 0 0 6px var(--ring)}
+
+    /* Footer */
+    footer{padding:32px 0; border-top:1px solid rgba(255,255,255,.06); color:var(--muted)}
+
+    /* Animations */
+    .reveal{opacity:0; transform:translateY(18px); transition:all .6s ease}
+    .reveal.show{opacity:1; transform:none}
   </style>
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <h1>CAP Garland, LLC</h1>
-    <p>Private Investment Fund</p>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <span>YOUR BRAND</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#work">Portfolio</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="btn ghost menu-btn" onclick="toggleMenu()">Menu</button>
+    </div>
   </header>
 
-  <section>
-    <h2>About Us</h2>
-    <p>CAP Garland, LLC is a Washington-based private investment fund focused on delivering value through diversified investment strategies.</p>
+  <!-- HERO -->
+  <section class="hero container">
+    <div class="hero-blob" aria-hidden="true"></div>
+    <span class="tag">We build modern websites</span>
+    <h1>Launch your business online with a sleek, fast, and responsive site.</h1>
+    <p>Replace this text with a short value proposition. Keep it clear and punchy—what do you offer, for whom, and what makes you different.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#contact">Get a free quote</a>
+      <a class="btn ghost" href="#work">See our work</a>
+    </div>
+  </section>
 
-    <h2>Contact</h2>
-    <div class="contact">
-      <p><strong>Address:</strong> 915 W 2nd Ave, Spokane, WA 99201</p>
-      <p><strong>Email:</strong> <a href="mailto:ryanberg@capgarland.shop">ryanberg@capgarland.shop</a></p>
-      <p><strong>Phone:</strong> (509) 822-3850</p>
+  <!-- SECTION 1: Services -->
+  <section id="services">
+    <div class="container">
+      <div class="head">
+        <h2>Our Services</h2>
+        <p class="muted">Five crisp cards you can rename. Swap icons & text easily.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card pad reveal">
+          <h3>Web Design</h3>
+          <p class="muted">Custom UI/UX with modern layouts, typography, and brand consistency.</p>
+        </article>
+        <article class="card pad reveal">
+          <h3>Development</h3>
+          <p class="muted">Fast, responsive builds (HTML/CSS/JS). Integrations on request.</p>
+        </article>
+        <article class="card pad reveal">
+          <h3>E‑Commerce</h3>
+          <p class="muted">Product pages, carts, and checkout setup with best practices.</p>
+        </article>
+        <article class="card pad reveal">
+          <h3>SEO Basics</h3>
+          <p class="muted">Clean semantics, meta tags, performance and accessibility.</p>
+        </article>
+        <article class="card pad reveal">
+          <h3>Brand Assets</h3>
+          <p class="muted">Logos, color palettes, and social media kits to match your site.</p>
+        </article>
+        <article class="card pad reveal">
+          <h3>Support</h3>
+          <p class="muted">Edits, updates, and guidance after launch.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: Features -->
+  <section id="features">
+    <div class="container">
+      <div class="head">
+        <h2>Why Choose Us</h2>
+        <p class="muted">Quick highlights of your advantages.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card pad reveal"><strong>Performance</strong><p class="muted">Optimized assets and best practices for speed.</p></div>
+        <div class="card pad reveal"><strong>Responsive</strong><p class="muted">Looks great on phones, tablets, and desktops.</p></div>
+        <div class="card pad reveal"><strong>Clean Code</strong><p class="muted">Semantic HTML and maintainable CSS.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Portfolio / Gallery -->
+  <section id="work">
+    <div class="container">
+      <div class="head">
+        <h2>Recent Work</h2>
+        <p class="muted">Drop in your screenshots or project thumbnails below.</p>
+      </div>
+      <div class="gallery reveal">
+        <!-- Replace src with your images (1200x800 or similar) -->
+        <div class="item"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Project 1"/></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1200&auto=format&fit=crop" alt="Project 2"/></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" alt="Project 3"/></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Project 4"/></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop" alt="Project 5"/></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop" alt="Project 6"/></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?q=80&w=1200&auto=format&fit=crop" alt="Project 7"/></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1550525811-e5869dd03032?q=80&w=1200&auto=format&fit=crop" alt="Project 8"/></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: About -->
+  <section id="about">
+    <div class="container">
+      <div class="head">
+        <h2>About Us</h2>
+        <p class="muted">Tell your story. Who you are, what you value, why clients trust you.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card pad reveal">
+          <h3>Our Mission</h3>
+          <p class="muted">Write 3–5 lines explaining the mission and the impact you aim to create for clients.</p>
+        </div>
+        <div class="card pad reveal">
+          <h3>Our Approach</h3>
+          <p class="muted">Explain your process: discovery → design → build → launch → support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="head">
+        <h2>Contact</h2>
+        <p class="muted">Replace the details below with your real info.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card pad reveal">
+          <h3>Get in touch</h3>
+          <p class="muted">Email: <a href="mailto:contact@yourbrand.com">contact@yourbrand.com</a><br>
+          Phone: <a href="tel:+212600000000">+212 600 00 00 00</a><br>
+          Address: 123 Example Ave, City, Country</p>
+          <p class="muted">Working hours: Mon–Fri, 9:00–18:00</p>
+        </div>
+        <div class="card pad reveal">
+          <form onsubmit="event.preventDefault(); alert('Form submitted (demo)');">
+            <input aria-label="Your name" required placeholder="Your name" />
+            <input aria-label="Email" type="email" required placeholder="Email" />
+            <textarea rows="5" aria-label="Message" required placeholder="Tell us about your project..."></textarea>
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 CAP Garland, LLC. All rights reserved.
+    <div class="container">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+        <span>© <span id="year"></span> YOUR BRAND. All rights reserved.</span>
+        <span>Built with ❤ — <a href="#">Privacy</a> · <a href="#">Terms</a></span>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // Mobile menu (simple): toggle nav list into a sheet on small screens
+    function toggleMenu(){
+      const nav = document.querySelector('header nav ul');
+      if(!nav) return;
+      const open = getComputedStyle(nav).display !== 'none';
+      nav.style.display = open ? 'none' : 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.gap = '14px';
+      nav.style.position = 'absolute';
+      nav.style.top = '64px';
+      nav.style.right = '20px';
+      nav.style.background = 'rgba(11,15,20,.95)';
+      nav.style.padding = '16px';
+      nav.style.border = '1px solid rgba(255,255,255,.08)';
+      nav.style.borderRadius = '14px';
+      nav.style.boxShadow = 'var(--shadow)';
+    }
+
+    // Reveal on scroll animation
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+    }, {threshold:.14});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if(id.length > 1){
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
